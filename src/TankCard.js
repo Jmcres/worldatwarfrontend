@@ -1,24 +1,76 @@
-import React from 'react'
 
 
-const TankCard =(props) => {
-    // console.log(props)
-    return (
-    <div id={`card-${props.activeTank.index}`} className="card">
-        <h1>{props.activeTank.name}</h1>
-        <h2>{props.activeTank.role}</h2>
-        <h3>{props.activeTank.side}: {props.activeTank.country}</h3>
-        <img src={props.activeTank.img_url}  />
-    <div className="details">
-        <span className="index">{props.activeTank.id}</span>
-        <div className="features">
-              <li className="main">Main Armament: {props.activeTank.main}</li>
-              <li className="secondary">Secondary Armament: {props.activeTank.secondary} </li>
-              <li className="armor">Armor: {props.activeTank.armor}</li>
-              <p>Description: {props.activeTank.description}</p>
-        </div>
-    </div>
-</div>)
+import React, {Component} from 'react'
+// import { Card, CardTitle } from 'react-materialize'
+
+
+
+class TankCard extends Component {
+    state = {
+        compare: false,
+    }
+
+    preventTooMany = () => {
+        if(this.state.compare.length > 2){
+            alert("Only Two")
+        }
+    }
+    
+    handleInputChange =(event)=> {
+      // console.log("checked")
+      // console.log(event.target)
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        // console.log(value.length, "value")
+        // console.log(target.checked.length, "target")
+        // console.log(name, "name")
+        this.setState({
+          [name]: value
+        });
+      }
+    render() {
+        // console.log("tankCard state", this.state)
+     return (
+            <div className="ui column">
+                        <div
+                        className="ui card"
+                        key={this.props.id}
+                        
+                        >
+                        <div className="image">
+                            <img alt="oh no!" src={this.props.img_url} onClick={()=> this.props.showDetails(this.props.id)} />
+                        </div>
+                        <div className="content">
+                            <div className="header">
+                            <h1>{this.props.name}</h1> 
+                            {this.props.role} 
+                            </div>
+
+                            <div className="meta text-wrap">
+                            <h3>{this.props.side}
+                            <br></br>
+                            {this.props.country}</h3>
+                            </div>
+                        </div>
+                        <div className="extra content">
+                            <h6> Firepower: {this.props.gun}</h6>
+                            <h6>Ammo: {this.props.ammo}</h6>
+                            <h6>Armor: {this.props.armor}</h6>
+                        </div>
+                        <label>
+                            Compare:
+                            <input
+                                name="compare"
+                                type="checkbox"
+                                checked={this.state.compare}
+                                onChange={this.handleInputChange} />
+                            </label>
+                        </div>
+                        <button onClick={()=> this.props.removeFromArmory(this.props.id)}>X</button>
+                        </div>
+                        );
+     }
 }
 
 export default TankCard
