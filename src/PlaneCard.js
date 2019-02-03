@@ -31,7 +31,7 @@ const PlaneCard =(props) => {
                             <li>{props.range}</li>
                         </div>
                         </div>
-                        {/* <button onClick={()=> props.removeFromArmory(props.id)}>X</button> */}
+                        <button onClick={()=> props.removeFromArmory(props.id)}>X</button>
                         </div>
                         );
 }
