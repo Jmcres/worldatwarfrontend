@@ -13,11 +13,7 @@ class PlaneCollection extends Component {
 
         
 
-    // renderTankCards = () => {
-    //     return this.props.tanks.map(tank =>
-    //       <TankCard key={tank.id} {...tank} addToArmory={this.props.addToArmory} />
-    //     )
-    //   }
+   
         
             nextFavoritie =()=>{
             const newIndex= this.state.activeIndex + 1

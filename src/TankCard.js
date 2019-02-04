@@ -6,31 +6,10 @@ import React, {Component} from 'react'
 
 
 class TankCard extends Component {
-    state = {
-        compare: false,
-    }
-
-    preventTooMany = () => {
-        if(this.state.compare.length > 2){
-            alert("Only Two")
-        }
-    }
     
-    handleInputChange =(event)=> {
-      // console.log("checked")
-      // console.log(event.target)
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        // console.log(value.length, "value")
-        // console.log(target.checked.length, "target")
-        // console.log(name, "name")
-        this.setState({
-          [name]: value
-        });
-      }
+   
     render() {
-        // console.log("tankCard state", this.state)
+        console.log("tankCard state", this.state)
      return (
             <div className="ui column">
                         <div
@@ -58,14 +37,7 @@ class TankCard extends Component {
                             <h6>Ammo: {this.props.ammo}</h6>
                             <h6>Armor: {this.props.armor}</h6>
                         </div>
-                        <label>
-                            Compare:
-                            <input
-                                name="compare"
-                                type="checkbox"
-                                checked={this.state.compare}
-                                onChange={this.handleInputChange} />
-                            </label>
+                        <button onClick={()=> this.props.addItemToCompare(this.props.id)}>Mobilize</button>
                         </div>
                         <button onClick={()=> this.props.removeFromArmory(this.props.id)}>X</button>
                         </div>
