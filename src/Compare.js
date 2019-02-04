@@ -7,13 +7,15 @@ import CompareSpecs from './CompareSpecs'
 
 export default class Compare extends Component {
 
+    
+
    
     render(){
         console.log("props in Compare", this.props)
         return (
             <div>
             {this.props.compareItems.map(item => { return (
-                <CompareSpecs key={item.id} {...item} handleClick={this.handleClick}  /> )})}
+                <CompareSpecs key={item.id} {...item} compareBack={this.props.compareBack} /> )})}
                 </div>
         );
       }

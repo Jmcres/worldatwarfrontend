@@ -2,6 +2,7 @@ const tanksTwo = [
     {
       id: 1,
       index: 0,
+      type: "tank",
       name: "Medium Tank M4 Sherman",
       img_url: 'http://www.tanks-encyclopedia.com/ww2/US/Medium/M4/M4_Sherman_model42_belgium_45.png',
       role: "Medium Tank",
@@ -23,6 +24,7 @@ const tanksTwo = [
     {
         id: 2,
         index: 1,
+        type: "tank",
         name: "T26E4 Super Pershing",
         img_url: 'http://www.tanks-encyclopedia.com/ww2/US/Heavy/M26_Pershing/T26A4_Super-Pershing.png',
         role: "Heavy/Medium Tank",
@@ -44,6 +46,7 @@ const tanksTwo = [
       {
         id: 3,
         index: 2,
+        type: "tank",
         name: "3in GMC M10 “Wolverine”",
         img_url: 'http://www.tanks-encyclopedia.com/ww2/US/Tanks_Hunters/M10_Wolverine/M10_Wolverine_early.png',
         role: "Tank Killer",
@@ -65,6 +68,7 @@ const tanksTwo = [
       {
         id: 4,
         index: 3,
+        type: "tank",
         name: "T-34/76”",
         img_url: 'http://www.tanks-encyclopedia.com/ww2/soviet/Medium_Tanks/T34-76/t34-76_sovietcamo.png',
         role: "Medium Tank",
@@ -86,6 +90,7 @@ const tanksTwo = [
       {
         id: 5,
         index: 4,
+        type: "tank",
         name: "SU-100",
         img_url: 'http://www.tanks-encyclopedia.com/ww2/soviet/SPGs/SU-85-100/SU100-2.png',
         role: "Tank Destroyer",
@@ -107,6 +112,7 @@ const tanksTwo = [
       {
         id: 5,
         index: 4,
+        type: "tank",
         name: "IS-2",
         img_url: 'http://www.tanks-encyclopedia.com/ww2/soviet/Heavy_Tanks/IS-II/IS-II_29Guards_HTB_Poland45.png',
         role: "Heavy Tank",
@@ -128,6 +134,7 @@ const tanksTwo = [
       {
         id: 6,
         index: 5,
+        type: "tank",
         name: "Panzer V Panther",
         img_url: 'http://www.tanks-encyclopedia.com/ww2/nazi_germany/Medium_Tanks/Panzer-V_Panther/Panther_Ausf-D-1_Turm-IV.png',
         role: "Medium Tank",
@@ -149,6 +156,7 @@ const tanksTwo = [
       {
         id: 7,
         index: 6,
+        type: "tank",
         name: "Jagdpanzer IV",
         img_url: 'http://www.tanks-encyclopedia.com/ww2/nazi_germany/Panzerjagers/Jagdpanzer-IV/Jagdpanzer-IV-L48_33PzAbt_15PZD_Italy1944.png',
         role: "Tank Hunter",
@@ -170,6 +178,7 @@ const tanksTwo = [
       {
         id: 8,
         index: 7,
+        type: "tank",
         name: "Jagdpanzer 38(t) Hetzer",
         img_url: 'http://www.tanks-encyclopedia.com/ww2/nazi_germany/Panzerjagers/Hetzer/Hetzer-Hun-winter44-45.png',
         role: "Tank Hunter",
@@ -191,6 +200,7 @@ const tanksTwo = [
       {
         id: 9,
         index: 8,
+        type: "tank",
         name: "Panzer IV",
         img_url: 'http://www.tanks-encyclopedia.com/ww2/nazi_germany/Medium_Tanks/Panzer-IV/panzer_IV_AusfE.png',
         role: "Medium Tank",
@@ -212,6 +222,7 @@ const tanksTwo = [
       {
         id: 10,
         index: 8,
+        type: "tank",
         name: "Panzer VI Tiger",
         img_url: 'http://www.tanks-encyclopedia.com/ww2/nazi_germany/Heavy_Tanks/Panzer-VI_Tiger/VK4501_PzKpfwVI_Tiger-P_SdKfz-181.png',
         role: "Heavy Tank",

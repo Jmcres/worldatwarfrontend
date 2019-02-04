@@ -64,7 +64,7 @@ const CompareSpecs = props => {
             </div> */}
             <button
               className="ui button fluid"
-              onClick={props.handleClick}
+              onClick={() => props.compareBack(props.id)}
             >
               Go Back
             </button>

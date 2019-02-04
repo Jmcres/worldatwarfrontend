@@ -27,20 +27,29 @@ export default class HomePage extends Component {
 
    
     addItemToCompare = (itemId) => {
-        console.log("firing")
+        console.log("firing", )
         const foundCompare = this.state.armory.find(item => item.id === itemId)
-        console.log("foundCompare", foundCompare)
+        console.log("foundCompare", foundCompare.type, this.state.compareItems.type)
         if(this.state.compareItems.length === 0){
             this.setState({
                 compareItems: [...this.state.compareItems, foundCompare],
             })
-         } else if (this.state.compareItems.length === 1 && this.state.compareItems.type === foundCompare.type){
+         } else if (this.state.compareItems.length === 1 && this.state.compareItems[0].type == foundCompare.type){
                 this.setState({
                     compareItems: [...this.state.compareItems, foundCompare],
                 })
-            } else if (this.state.compareItems.length === 1 && this.state.compareItems.type !== foundCompare.type){
+            } else if (this.state.compareItems.length === 1 && this.state.compareItems[0].type !== foundCompare.type){
                 alert("You can only compare weapons of the same type")
         } else { alert("You Can Only Compare Two Items")}
+    }
+
+
+    compareBack =(itemId)=> {
+        console.log("firing")
+        const foundCompareTwo = this.state.compareItems.find(item => item.id === itemId)
+        this.setState({
+            compareItems: this.state.compareItems.filter((item) => { return (item !== foundCompareTwo)}),
+        }) 
     }
 
     handleChange = (e)=> {
@@ -94,21 +103,21 @@ export default class HomePage extends Component {
         })
       }
 
-      renderContent = () => {
-            if(this.state.tanks.length){
-              return(
-                <div>
-                  <h1>{this.state.tanks[this.state.activeIndex].name}</h1>
-                  <li>{this.state.tanks[this.state.activeIndex].side}</li>
-                  <li>{this.state.tanks[this.state.activeIndex].country}</li>
-                  <br></br>
-                  <li>{this.state.tanks[this.state.activeIndex].role}</li>
-                  <li>{this.state.tanks[this.state.activeIndex].firepower}</li>
-                  <p>{this.state.tanks[this.state.activeIndex].description}</p>
-                </div>
-              )
-            }
-          }
+    //   renderContent = () => {
+    //         if(this.state.tanks.length){
+    //           return(
+    //             <div>
+    //               <h1>{this.state.tanks[this.state.activeIndex].name}</h1>
+    //               <li>{this.state.tanks[this.state.activeIndex].side}</li>
+    //               <li>{this.state.tanks[this.state.activeIndex].country}</li>
+    //               <br></br>
+    //               <li>{this.state.tanks[this.state.activeIndex].role}</li>
+    //               <li>{this.state.tanks[this.state.activeIndex].firepower}</li>
+    //               <p>{this.state.tanks[this.state.activeIndex].description}</p>
+    //             </div>
+    //           )
+    //         }
+    //       }
         
 
 
@@ -151,7 +160,7 @@ export default class HomePage extends Component {
         <div>
             <Search inputValue={this.state.inputValue} handleChange={this.handleChange} />
             <div className="thumbnail"style={thumbnailStyle}>
-            <Compare compareItems={this.state.compareItems} handleClick={this.handleClick} />
+            <Compare compareItems={this.state.compareItems} compareBack={this.compareBack} />
             <UserArmory addItemToCompare={this.addItemToCompare} armory={this.state.armory} showDetails={this.showDetails} removeFromArmory={this.removeFromArmory} />
             
             </div>

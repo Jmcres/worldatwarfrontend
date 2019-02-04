@@ -2,6 +2,7 @@ const planes = [
     {
       id: 11,
       index: 0,
+      type: 1,
       name: "P-51 Mustang",
       img_url: 'https://www.plane-encyclopedia.com/wp-content/uploads/2016/08/Swamp-Fox-p-51d.png',
       role: "Fighter Plane",
@@ -15,6 +16,7 @@ const planes = [
     {
       id: 12,
       index: 1,
+      type: 1,
       name: "Vought F4U Corsair",
       img_url: 'https://www.plane-encyclopedia.com/wp-content/uploads/2016/09/F4U-4-VMF-124-13-Kenneth-A.-Walsh-Okinawa-06-45_03.png',
       role: "Fighter Plane",
@@ -28,6 +30,7 @@ const planes = [
     {
       id: 13,
       index: 2,
+      type: 1,
       name: "Focke Wulf Fw 187",
       img_url: 'https://www.plane-encyclopedia.com/wp-content/uploads/2018/12/Focke-Wulf-Fw-187-A-0-Side-View.png',
       role: "Bomber Plane",
@@ -41,6 +44,7 @@ const planes = [
     {
       id: 14,
       index: 3,
+      type: 1,
       name: "Messerschmitt Me 209",
       img_url: 'https://www.plane-encyclopedia.com/wp-content/uploads/2017/08/Me209v4_03.png',
       role: "Fighter Plane",
@@ -54,6 +58,7 @@ const planes = [
     {
         id: 15,
         index: 4,
+        type: 1,
         name: "Messerschmitt Bf 109",
         img_url: 'https://www.plane-encyclopedia.com/wp-content/uploads/2016/10/Bf109_Wespe.png',
         role: "Fighter Plane",
