@@ -1,24 +1,36 @@
 import React from "react";
 
+
+
+
 const CompareSpecs = props => {
-  // let { bot } = props;
 
-//   let botType;
+  // const findScore = () => {
+  //   return (
+  //     ((((((props.firepowergun *(.75)) +
+  //     (props.firepowerammo *(.25)))/ 2)*(.20)) +
+  //     (props.speedscore *(.20)) +
+  //     (props.health *(.20)) +
+  //     (props.protection *(.20)) +
+  //     (props.rangescore *(.20)) ) /5)
+  //     )
+  // }
 
-//   switch (props.bot_class) {
-//     case "Assault":
-//       botType = <i className="icon large circular military" />;
-//       break;
-//     case "Defender":
-//       botType = <i className="icon large circular shield" />;
-//       break;
-//     case "Support":
-//       botType = <i className="icon large circular ambulance" />;
-//       break;
-//     default:
-//       botType = <div />;
-//   }
+  function findScore (){
+    const totalScore =  ((((((props.firepowergun *(.75)) +
+          (props.firepowerammo *(.25)))/ 2)*(.20)) +
+          (props.speedscore *(.20)) +
+          (props.health *(.20)) +
+          (props.protection *(.20)) +
+          (props.rangescore *(.20)) ) /5)
+    return (
+        Math.round((totalScore * (100)) )
+        )
+  }
 
+  const itemScore =findScore()
+
+  console.log("CompareSpecs Props", props)
   return (
     <div className="ui segment">
       <div className="ui two column centered grid">
@@ -32,36 +44,20 @@ const CompareSpecs = props => {
           </div>
           <div className="four wide column">
             <h1>Name: {props.name}</h1>
-            <h2>Role: {props.role}</h2>
-            <li>
-              Side: {props.side}
-              </li>
-              <li>
-              Country: {props.country}
-            </li>
-            <br />
-            <h3>Factors: 
-                <li>{props.main}</li>
+            <h2>
+              <ul>Role: {props.role}</ul>
+              <ul> Side: {props.side} </ul>
+              <ul> Country: {props.country} </ul>
+            </h2>
+            <h3>Features: 
+                <li> Firepower: {props.gun}</li>
+                <li> Ammo Capacity: {props.ammo}</li>
+                <li> Armor: {props.armor}</li>
+                <li> Speed: {props.speed}</li>
+                <li> Range: {props.speed}</li>
+                <li> Crew: {props.crew}</li>
                 </h3>
-                <p>Description: {props.description}</p>
-            {/* <div className="ui segment">
-              <div className="ui three column centered grid">
-                <div className="row">
-                  <div className="column">
-                    <i className="icon large circular red heartbeat" />
-                    <strong>{props.health}</strong>
-                  </div>
-                  <div className="column">
-                    <i className="icon large circular yellow lightning" />
-                    <strong>{props.damage}</strong>
-                  </div>
-                  <div className="column">
-                    <i className="icon large circular blue shield" />
-                    <strong>{props.armor}</strong>
-                  </div>
-                </div>
-              </div>
-            </div> */}
+                <h2> SCORE: {itemScore} </h2>
             <button
               className="ui button fluid"
               onClick={() => props.compareBack(props.id)}

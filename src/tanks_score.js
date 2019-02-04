@@ -17,9 +17,9 @@ const tanksTwo = [
       firepowergun: 3 ,
         firepowerammo: 3,
         speedscore: 3,
-        health: 3,
+        health: 2,
         protection: 3 ,
-        rangescore: 3,
+        rangescore: 2,
     },
     {
         id: 2,

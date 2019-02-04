@@ -9,7 +9,7 @@ class TankCard extends Component {
     
    
     render() {
-        console.log("tankCard state", this.state)
+        // console.log("tankCard state", this.state)
      return (
             <div className="ui column">
                         <div

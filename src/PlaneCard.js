@@ -4,7 +4,7 @@ import React from 'react'
 
 
 const PlaneCard =(props) => {
-    console.log(props)
+    // console.log(props)
      return (
             <div className="ui column">
                         <div

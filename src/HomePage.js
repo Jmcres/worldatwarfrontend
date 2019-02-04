@@ -25,7 +25,36 @@ export default class HomePage extends Component {
         compareItems:[],
     }
 
-   
+   letsBattle =() => {
+       console.log("Battle Time", this.state.compareItems)
+      
+
+       const scoreOne = Math.round((((((((this.state.compareItems[0].firepowergun *(.75)) +
+       (this.state.compareItems[0].firepowerammo *(.25)))/ 2)*(.20)) +
+       (this.state.compareItems[0].speedscore *(.20)) +
+       (this.state.compareItems[0].health *(.20)) +
+       (this.state.compareItems[0].protection *(.20)) +
+       (this.state.compareItems[0].rangescore *(.20)) ) /5) * (100) ))
+
+       const scoreTwo = Math.round((((((((this.state.compareItems[1].firepowergun *(.75)) +
+       (this.state.compareItems[1].firepowerammo *(.25)))/ 2)*(.20)) +
+       (this.state.compareItems[1].speedscore *(.20)) +
+       (this.state.compareItems[1].health *(.20)) +
+       (this.state.compareItems[1].protection *(.20)) +
+       (this.state.compareItems[1].rangescore *(.20)) ) /5) * (100) ))
+
+       if(this.state.compareItems.length === 2){
+       if(scoreOne > scoreTwo) {
+           return alert(this.state.compareItems[0].name + " " + "Wins")
+       } else if(scoreOne < scoreTwo) {return alert( this.state.compareItems[1].name + " " + "Wins")}
+       else { alert(" The Battle Results in a Tie !!") }   
+    } else{alert("YOU CANT BATTLE YOURSELF")}
+   }
+
+//    calculateItemScore = () => {
+//        return (this.)
+//    }
+
     addItemToCompare = (itemId) => {
         console.log("firing", )
         const foundCompare = this.state.armory.find(item => item.id === itemId)
@@ -34,7 +63,7 @@ export default class HomePage extends Component {
             this.setState({
                 compareItems: [...this.state.compareItems, foundCompare],
             })
-         } else if (this.state.compareItems.length === 1 && this.state.compareItems[0].type == foundCompare.type){
+         } else if (this.state.compareItems.length === 1 && this.state.compareItems[0].type === foundCompare.type){
                 this.setState({
                     compareItems: [...this.state.compareItems, foundCompare],
                 })
@@ -155,12 +184,12 @@ export default class HomePage extends Component {
 
 
     render(){
-        console.log("state in homepage", this.state)
+        // console.log("state in homepage", this.state)
         return(
         <div>
             <Search inputValue={this.state.inputValue} handleChange={this.handleChange} />
             <div className="thumbnail"style={thumbnailStyle}>
-            <Compare compareItems={this.state.compareItems} compareBack={this.compareBack} />
+            <Compare compareItems={this.state.compareItems} compareBack={this.compareBack} letsBattle={this.letsBattle}/>
             <UserArmory addItemToCompare={this.addItemToCompare} armory={this.state.armory} showDetails={this.showDetails} removeFromArmory={this.removeFromArmory} />
             
             </div>
