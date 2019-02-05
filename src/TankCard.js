@@ -23,6 +23,7 @@ class TankCard extends Component {
                         <div className="content">
                             <div className="header">
                             <h1>{this.props.name}</h1> 
+                            {this.props.type} 
                             {this.props.role} 
                             </div>
 

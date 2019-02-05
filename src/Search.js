@@ -1,9 +1,34 @@
 import React from "react";
-
+// import React, { Fragment } from 'react'
 
 class Search extends React.Component {
-  //your code here
 
+//   state = {
+//     search: ''
+//   }
+
+//   handleChange = (e) => {
+//     this.setState({
+//       search: e.target.value
+//     }, () => {
+//       this.props.filterCategories(this.state.search)
+//     })
+//   }
+
+//   render() {
+//     return (
+//       <Fragment>
+//         {/* <Navbar brand='Recipe App' right /> */}
+
+//         <div className='container'>
+//           <h5>Filter by Category:</h5>
+//           <input type='text' onChange={this.handleChange} value={this.state.search} />
+//         </div>
+//       </Fragment>
+//     )
+//   }
+
+// }
   render(){
 		
   	return (

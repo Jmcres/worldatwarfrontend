@@ -11,10 +11,16 @@ const PlaneSlide =(props) => {
         <img src={props.activePlane.img_url}  />
     <div className="details">
         {/* <span className="index">{props.activePlane.id}</span> */}
+        <br></br>
         <div className="features">
-              <li className="main">Armament: {props.activePlane.main}</li>
-              <li className="secondary">Speed: {props.activePlane.speed} </li>
-              <li className="armor">Range: {props.activePlane.range}</li>
+            <h3>
+              <li className="main"> Weapons: {props.activePlane.gun}</li>
+              <li className="secondary">Bomb Capacity: {props.activePlane.ammo} </li>
+              <li className="armor"> Ceiling: {props.activePlane.armor}</li>
+              <li className="armor"> Speed: {props.activePlane.speed}</li>
+              <li className="armor"> Range: {props.activePlane.range}</li>
+              {/* <p>Description: {props.activeTank.description}</p> */}
+              </h3>
               {/* <p>Description: {props.activePlane.description}</p> */}
               <br></br>
               <button onClick={()=>props.addToArmory(props.activePlane.id)}>Add To Your Armory!</button>

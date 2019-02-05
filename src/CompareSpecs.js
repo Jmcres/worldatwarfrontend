@@ -5,17 +5,6 @@ import React from "react";
 
 const CompareSpecs = props => {
 
-  // const findScore = () => {
-  //   return (
-  //     ((((((props.firepowergun *(.75)) +
-  //     (props.firepowerammo *(.25)))/ 2)*(.20)) +
-  //     (props.speedscore *(.20)) +
-  //     (props.health *(.20)) +
-  //     (props.protection *(.20)) +
-  //     (props.rangescore *(.20)) ) /5)
-  //     )
-  // }
-
   function findScore (){
     const totalScore =  ((((((props.firepowergun *(.75)) +
           (props.firepowerammo *(.25)))/ 2)*(.20)) +
@@ -54,7 +43,7 @@ const CompareSpecs = props => {
                 <li> Ammo Capacity: {props.ammo}</li>
                 <li> Armor: {props.armor}</li>
                 <li> Speed: {props.speed}</li>
-                <li> Range: {props.speed}</li>
+                <li> Range: {props.range}</li>
                 <li> Crew: {props.crew}</li>
                 </h3>
                 <h2> SCORE: {itemScore} </h2>
@@ -66,13 +55,13 @@ const CompareSpecs = props => {
             </button>
             {/* <button
               className="ui button fluid"
-               onClick={()=> props.addToArmy(props.id)}
+              //  onClick={}
               //   // console.log(
               //   //   "connect this to a function that adds this bot to your bot army list"
               //   // )
               // }
             >
-              Enlist
+              Play Video
             </button> */}
           </div>
         </div>

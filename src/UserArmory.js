@@ -8,7 +8,7 @@ export default class UserArmory extends Component {
 
    
     render(){
-        console.log("userArmory", this.props.armory.length)
+        // console.log("userArmory", this.props.armory.length)
         return (
           <div className="ui segment inverted olive User-Armory">
             <div className="ui five column grid">

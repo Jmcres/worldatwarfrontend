@@ -4,10 +4,13 @@ import PlaneCollection from './PlaneCollection'
 import UserArmory from './UserArmory'
 // import tanks from './tanks_data'
 import tanksTwo from './tanks_score'
-import planes from './planes_data'
+import planesTwo from './plane_score'
 import Search from './Search'
 import ItemSpecs from './ItemSpecs'
 import Compare from './Compare'
+import Popup from './Popup'
+import UserProfile from './UserProfile'
+
 
 
 
@@ -15,18 +18,52 @@ export default class HomePage extends Component {
 
     state = {
         armory: [],
+        // filteredArmory: [],
         // tanks: tanks,
-        planes: planes,
+        planes: planesTwo,
         clickedTank: null,
         clickedItem: null,
-        inpoutValue: "",
+        inputValue: "",
         tanks: tanksTwo,
         activeIndex: 0,
         compareItems:[],
+        itemWinner: [],
+        isHidden: true,
     }
+    toggleHidden = () => {
+        this.setState({
+          isHidden: !this.state.isHidden
+        })
+    // } else { this.setState({
+    //     isHidden: true
+    //   })
+        }
+    
+        
+
+      toggleClose = () => {
+          this.setState({
+            isHidden: true,
+            compareItems:[],
+          })
+      }
+
+    // renderContent = (itemWinner) => {
+    //       return(
+    //         <div>
+    //           <h1>{itemWinner.name}</h1>
+    //           <li>{itemWinner.side}</li>
+    //           <li>{itemWinner.country}</li>
+    //           <br></br>
+    //           <li>{itemWinner.role}</li>
+    //           <li>{itemWinner.firepower}</li>
+    //           <p>{itemWinner.description}</p>
+    //         </div>
+    //       )
+    //   }
 
    letsBattle =() => {
-       console.log("Battle Time", this.state.compareItems)
+    //    console.log("Battle Time", this.state.compareItems)
       
 
        const scoreOne = Math.round((((((((this.state.compareItems[0].firepowergun *(.75)) +
@@ -44,21 +81,35 @@ export default class HomePage extends Component {
        (this.state.compareItems[1].rangescore *(.20)) ) /5) * (100) ))
 
        if(this.state.compareItems.length === 2){
-       if(scoreOne > scoreTwo) {
-           return alert(this.state.compareItems[0].name + " " + "Wins")
-       } else if(scoreOne < scoreTwo) {return alert( this.state.compareItems[1].name + " " + "Wins")}
-       else { alert(" The Battle Results in a Tie !!") }   
-    } else{alert("YOU CANT BATTLE YOURSELF")}
-   }
+            if(scoreOne > scoreTwo) {
+                return this.setState({
+                    itemWinner: this.state.compareItems[0]
+                })
+           
+        //    alert(this.state.compareItems[0].name + " " + "Wins")
+            } else if (scoreOne < scoreTwo) {
+                return this.setState({
+                    itemWinner: this.state.compareItems[1]
+                })} else {
+                    return this.setState({
+                        itemWinner: null
+                    })
+                }
+        // alert( this.state.compareItems[1].name + " " + "Wins")
+         } 
+            else{alert("YOU CANT BATTLE YOURSELF")}
+        }
+
+   
 
 //    calculateItemScore = () => {
 //        return (this.)
 //    }
 
     addItemToCompare = (itemId) => {
-        console.log("firing", )
+        // console.log("firing", )
         const foundCompare = this.state.armory.find(item => item.id === itemId)
-        console.log("foundCompare", foundCompare.type, this.state.compareItems.type)
+        // console.log("foundCompare", foundCompare.type, this.state.compareItems.type)
         if(this.state.compareItems.length === 0){
             this.setState({
                 compareItems: [...this.state.compareItems, foundCompare],
@@ -74,18 +125,36 @@ export default class HomePage extends Component {
 
 
     compareBack =(itemId)=> {
-        console.log("firing")
+        // console.log("firing")
         const foundCompareTwo = this.state.compareItems.find(item => item.id === itemId)
         this.setState({
             compareItems: this.state.compareItems.filter((item) => { return (item !== foundCompareTwo)}),
         }) 
     }
 
-    handleChange = (e)=> {
-        this.setState ({inputValue: e.target.value})
-      }
+    handleChange = (event) => {
+		// console.log("Changing")
+		// console.log (event.target.name)
+		this.setState({
+		inputValue: event.target.value
+		})
+    }
+    
+    // filterCategories = (search) => {
+    //     this.setState({
+    //       filteredArmory: this.state.armory.filter(item =>
+    //         item.name.toLowerCase().includes(search.toLowerCase())
+    //       )
+    //     })
+    //   }
         
-      handleFilter = () => {  return this.state.armory.filter(item => item.name.toLowerCase().includes(this.state.inputValue.toLowerCase()))}
+      filterArmory = () => this.state.armory.filter(item => {return (
+            item.name.toLowerCase().includes(this.state.inputValue.toLowerCase()) || 
+            item.type.toLowerCase().includes(this.state.inputValue.toLowerCase()) || 
+		    item.side.toLowerCase().includes(this.state.inputValue.toLowerCase()) || 
+		    item.country.toLowerCase().includes(this.state.inputValue.toLowerCase()) 
+        )})
+        
 
     addTankArmory = (tankId) => {
         // console.log("firing")
@@ -102,16 +171,22 @@ export default class HomePage extends Component {
         // console.log("itemId", itemId)
         const foundTank = this.state.tanks.find(tank => tank.id === itemId)
         const foundPlane = this.state.planes.find(plane => plane.id === itemId)
+
+        const foundCompareItem = this.state.compareItems.find(item => item.id === itemId)
+       
         // console.log("found tank", foundTank, "foundPlane", foundPlane)
 
         // this.state.tanks.splice(this.state.tanks.indexOf(foundBot), 1)
         if(foundPlane === undefined){
         this.setState({
             armory: this.state.armory.filter((item) => { return (item !== foundTank)}),
+            compareItems: this.state.compareItems.filter((item) => { return (item !== foundCompareItem)})
+
         }) 
         } else {
             this.setState({
             armory: this.state.armory.filter((item) => { return (item !== foundPlane)}),
+            compareItems: this.state.compareItems.filter((item) => { return (item !== foundCompareItem)})
             })
         }
     }
@@ -132,24 +207,6 @@ export default class HomePage extends Component {
         })
       }
 
-    //   renderContent = () => {
-    //         if(this.state.tanks.length){
-    //           return(
-    //             <div>
-    //               <h1>{this.state.tanks[this.state.activeIndex].name}</h1>
-    //               <li>{this.state.tanks[this.state.activeIndex].side}</li>
-    //               <li>{this.state.tanks[this.state.activeIndex].country}</li>
-    //               <br></br>
-    //               <li>{this.state.tanks[this.state.activeIndex].role}</li>
-    //               <li>{this.state.tanks[this.state.activeIndex].firepower}</li>
-    //               <p>{this.state.tanks[this.state.activeIndex].description}</p>
-    //             </div>
-    //           )
-    //         }
-    //       }
-        
-
-
 
     addPlaneArmory = (planeId) => {
         // console.log("firing")
@@ -162,46 +219,43 @@ export default class HomePage extends Component {
         }) // add conditional so no repeats
     }
 
-    // removeTankArmory = (tankId) => {
-    //     console.log("firing")
-    //     const foundTank = this.state.tanks.find(tank => tank.id === tankId)
-    //     // this.state.tanks.splice(this.state.tanks.indexOf(foundBot), 1)
-    //     this.setState({
-    //         armory: this.state.armory.filter(tank => tank !== foundTank),
-    //         tanks: this.state.tanks,
-    //     }) 
-    // }
-
-    // playVideo = (tankId) => {
-    //     console.log("firing")
-    //     const foundTank = this.state.tanks.find(tank => tank.id === tankId)
-    //     // this.state.tanks.splice(this.state.tanks.indexOf(foundBot), 1)
-    //     this.setState({
-    //         armory: this.state.armory.filter(tank => tank !== foundTank),
-    //         tanks: this.state.tanks,
-    //     }) 
-    // }
-
+    
 
     render(){
         // console.log("state in homepage", this.state)
+        console.log("itermWinner in homepage", this.state.itemWinner)
         return(
         <div>
-            <Search inputValue={this.state.inputValue} handleChange={this.handleChange} />
+            <UserProfile />
+            <br></br>
+            <Search handleChange={this.handleChange} inputValue={this.state.inputValue}/>
             <div className="thumbnail"style={thumbnailStyle}>
-            <Compare compareItems={this.state.compareItems} compareBack={this.compareBack} letsBattle={this.letsBattle}/>
-            <UserArmory addItemToCompare={this.addItemToCompare} armory={this.state.armory} showDetails={this.showDetails} removeFromArmory={this.removeFromArmory} />
-            
-            </div>
+            <div>
+            {!this.state.isHidden ? <Popup toggleClose={this.toggleClose} itemWinner={this.state.itemWinner}/> :
+            <div>
+            <Compare toggleHidden={this.toggleHidden} compareItems={this.state.compareItems} compareBack={this.compareBack} letsBattle={this.letsBattle}/>
+            <UserArmory armory={this.filterArmory()} addItemToCompare={this.addItemToCompare}  showDetails={this.showDetails} removeFromArmory={this.removeFromArmory} />
             {this.state.clickedItem ?
                 <ItemSpecs {...this.state.clickedItem} handleClick={this.handleClick} />  :
                      <div>
                     <TankCollection tanks={this.state.tanks} addToArmory={this.addTankArmory}  /> 
                     <PlaneCollection planes={this.state.planes} addToArmory={this.addPlaneArmory}  /> 
                     </div> }
-                
+            </div>
+            }
+                </div>
             
-        </div>)
+            </div>
+            
+           <div>
+            
+        </div>     
+            
+        </div>
+        
+        
+        
+        )
     }
     }
 

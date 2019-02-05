@@ -11,11 +11,16 @@ const TankSlide =(props) => {
         <img src={props.activeTank.img_url}  />
     <div className="details">
         {/* <span className="index">{props.activeTank.id}</span> */}
+        <br></br>
         <div className="features">
-              <li className="main">Main Armament: {props.activeTank.main}</li>
-              <li className="secondary">Secondary Armament: {props.activeTank.secondary} </li>
-              <li className="armor">Armor: {props.activeTank.armor}</li>
+            <h3>
+              <li className="main"> Weapons: {props.activeTank.gun}</li>
+              <li className="secondary">Ammo Capacity: {props.activeTank.ammo} </li>
+              <li className="armor"> Armor: {props.activeTank.armor}</li>
+              <li className="armor"> Speed: {props.activeTank.speed}</li>
+              <li className="armor"> Range: {props.activeTank.range}</li>
               {/* <p>Description: {props.activeTank.description}</p> */}
+              </h3>
               <br></br>
               <button onClick={()=>props.addToArmory(props.activeTank.id)}>Add To Your Armory!</button>
         </div>

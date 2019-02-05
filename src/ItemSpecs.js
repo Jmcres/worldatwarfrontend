@@ -1,23 +1,7 @@
 import React from "react";
 
 const ItemSpecs = props => {
-  // let { bot } = props;
-
-//   let botType;
-
-//   switch (props.bot_class) {
-//     case "Assault":
-//       botType = <i className="icon large circular military" />;
-//       break;
-//     case "Defender":
-//       botType = <i className="icon large circular shield" />;
-//       break;
-//     case "Support":
-//       botType = <i className="icon large circular ambulance" />;
-//       break;
-//     default:
-//       botType = <div />;
-//   }
+ 
 
   return (
     <div className="ui segment">
@@ -40,10 +24,9 @@ const ItemSpecs = props => {
               Country: {props.country}
             </li>
             <br />
-            <h3>Factors: 
-                <li>{props.main}</li>
+            <h3>Description:
+                <p>{props.description}</p>
                 </h3>
-                <p>Description: {props.description}</p>
             {/* <div className="ui segment">
               <div className="ui three column centered grid">
                 <div className="row">

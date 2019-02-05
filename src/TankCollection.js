@@ -43,7 +43,6 @@ class TankCollection extends Component {
             <div className="Favorites">
                 
                 <div className="Page">
-                <h1>User's Armory</h1>
                 <div className="col">
                 <div className={`cards-slider active-slide-${this.props.tanks.index}`}>
                 <div className="cards-slider-wrapper" style={{
