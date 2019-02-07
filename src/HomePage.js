@@ -10,6 +10,7 @@ import ItemSpecs from './ItemSpecs'
 import Compare from './Compare'
 import Popup from './Popup'
 import UserProfile from './UserProfile'
+// import Form from './Form'
 
 
 
@@ -19,7 +20,7 @@ export default class HomePage extends Component {
     state = {
         armory: [],
         // filteredArmory: [],
-        // tanks: tanks,
+        // tanks: [],
         planes: planesTwo,
         clickedTank: null,
         clickedItem: null,
@@ -29,7 +30,16 @@ export default class HomePage extends Component {
         compareItems:[],
         itemWinner: [],
         isHidden: true,
+        formHidden: true,
     }
+
+
+    // componentDidMount(){
+    //     fetch("http://localhost:3000/api/v1/tanks")
+    //     .then(r => r.json())
+    //     .then(tanks => console.table(tanks))
+    // }
+    
     toggleHidden = () => {
         this.setState({
           isHidden: !this.state.isHidden
@@ -38,6 +48,17 @@ export default class HomePage extends Component {
     //     isHidden: true
     //   })
         }
+
+        toggleFormHidden = () => {
+            console.log("rendering Form")
+            this.setState({
+              formHidden: !this.state.formHidden,
+              compareItems:[],
+            })
+        // } else { this.setState({
+        //     isHidden: true
+        //   })
+            }
     
         
 
@@ -97,15 +118,14 @@ export default class HomePage extends Component {
                 }
         // alert( this.state.compareItems[1].name + " " + "Wins")
          } 
-            else{alert("YOU CANT BATTLE YOURSELF")}
+            else{alert("YOU CANT BATTLE YOURSELF")}  //You can battle your slef at least on planes
         }
 
-   
+        
 
-//    calculateItemScore = () => {
-//        return (this.)
-//    }
 
+
+//   
     addItemToCompare = (itemId) => {
         // console.log("firing", )
         const foundCompare = this.state.armory.find(item => item.id === itemId)
@@ -223,12 +243,13 @@ export default class HomePage extends Component {
 
     render(){
         // console.log("state in homepage", this.state)
-        console.log("itermWinner in homepage", this.state.itemWinner)
+        // console.log("props in homepage", this.props)
+        // console.log("itermWinner in homepage", this.state.itemWinner)
         return(
         <div>
             <UserProfile />
             <br></br>
-            <Search handleChange={this.handleChange} inputValue={this.state.inputValue}/>
+            <Search handleChange={this.handleChange} inputValue={this.state.inputValue} toggleFormHidden={this.toggleFormHidden}/>
             <div className="thumbnail"style={thumbnailStyle}>
             <div>
             {!this.state.isHidden ? <Popup toggleClose={this.toggleClose} itemWinner={this.state.itemWinner}/> :
@@ -242,6 +263,7 @@ export default class HomePage extends Component {
                     <PlaneCollection planes={this.state.planes} addToArmory={this.addPlaneArmory}  /> 
                     </div> }
             </div>
+            
             }
                 </div>
             

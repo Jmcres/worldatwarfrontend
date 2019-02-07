@@ -1,21 +1,21 @@
-
 import React, { Component } from 'react';
-import MainPage from './MainPage'
+import HomePage from './HomePage'
 // import LoginBox from './LoginBox'
 // import RegisterBox from './RegisterBox'
 import './App.css';
-// import Form from './Form'
+import LogReg from './Login/LogReg'
 
-class App extends Component {
+class MainPage extends Component {
   
 
   render() {
     return (
       <div className="App">
-         <MainPage />
+            <LogReg/>
+            <HomePage />
       </div>
     );
   }
 }
 
-export default App;
+export default MainPage;
