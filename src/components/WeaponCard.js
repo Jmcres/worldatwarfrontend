@@ -5,7 +5,7 @@ import React, {Component} from 'react'
 
 
 
-class TankCard extends Component {
+class WeaponCard extends Component {
     
    
     render() {
@@ -46,4 +46,4 @@ class TankCard extends Component {
      }
 }
 
-export default TankCard
+export default WeaponCard

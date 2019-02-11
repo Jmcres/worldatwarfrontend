@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 // import tanks from './tanks_data'
-import TankSlide from './TankSlide'
+import TankSlide from '../components/TankSlide'
 // import TankCard from './TankCard'
 // import UserArmory from './UserArmory';
 
@@ -36,7 +36,7 @@ class TankCollection extends Component {
         
 
     render() {
-        // console.log("Props in TankCollection", this.props)
+        console.log("Props in TankCollection", this.props)
         // console.log(tanks.index)
         return (
             <div>
@@ -44,9 +44,9 @@ class TankCollection extends Component {
                 
                 <div className="Page">
                 <div className="col">
-                <div className={`cards-slider active-slide-${this.props.tanks.index}`}>
+                <div className={`cards-slider active-slide-${this.props.tanks.order}`}>
                 <div className="cards-slider-wrapper" style={{
-                  'transform': `translateX(-${this.props.tanks.index*(100/this.props.tanks.length)}%)`
+                  'transform': `translateX(-${this.props.tanks.order*(100/this.props.tanks.length)}%)`
                 }}> 
                  <TankSlide activeTank={this.props.tanks[this.state.activeIndex]} addToArmory={this.props.addToArmory} />
                  </div>

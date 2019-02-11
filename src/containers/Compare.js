@@ -1,9 +1,5 @@
 import React, {Component} from 'react'
-import CompareSpecs from './CompareSpecs'
-// import Popup from './Popup'
-
-// import PlaneCard from "./PlaneCard";
-
+import CompareSpecs from '../components/CompareSpecs'
 
 
 export default class Compare extends Component {

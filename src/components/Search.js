@@ -4,7 +4,7 @@ import React from "react";
 class Search extends React.Component {
 
   render(){
-		console.log("search props", this.props)
+		// console.log("search props", this.props)
   	return (
   	  <div className="header">
     		SEARCH:	<input onChange={this.props.handleChange} type="text" value={this.props.inputValue} name="input"/>

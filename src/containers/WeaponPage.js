@@ -3,42 +3,40 @@ import TankCollection from './TankCollection'
 import PlaneCollection from './PlaneCollection'
 import UserArmory from './UserArmory'
 // import tanks from './tanks_data'
-import tanksTwo from './tanks_score'
-import planesTwo from './plane_score'
-import Search from './Search'
-import ItemSpecs from './ItemSpecs'
+// import tanksTwo from '../data/tanks_score'
+// import planesTwo from '../data/plane_score'
+import Search from '../components/Search'
+import ItemSpecs from '../components/ItemSpecs'
 import Compare from './Compare'
-import Popup from './Popup'
+import Popup from '../components/Popup'
 import UserProfile from './UserProfile'
 // import Form from './Form'
 
 
 
 
-export default class HomePage extends Component {
+
+
+export default class WeaponPage extends Component {
 
     state = {
         armory: [],
-        // filteredArmory: [],
-        // tanks: [],
-        planes: planesTwo,
+        // weapons: [] ,
+        // planes: planesTwo,
         clickedTank: null,
         clickedItem: null,
         inputValue: "",
-        tanks: tanksTwo,
+        // tanks: tanksTwo,
+        // tanks:[],
+        // planes:[],
         activeIndex: 0,
         compareItems:[],
         itemWinner: [],
         isHidden: true,
         formHidden: true,
     }
+   
 
-
-    // componentDidMount(){
-    //     fetch("http://localhost:3000/api/v1/tanks")
-    //     .then(r => r.json())
-    //     .then(tanks => console.table(tanks))
-    // }
     
     toggleHidden = () => {
         this.setState({
@@ -69,19 +67,6 @@ export default class HomePage extends Component {
           })
       }
 
-    // renderContent = (itemWinner) => {
-    //       return(
-    //         <div>
-    //           <h1>{itemWinner.name}</h1>
-    //           <li>{itemWinner.side}</li>
-    //           <li>{itemWinner.country}</li>
-    //           <br></br>
-    //           <li>{itemWinner.role}</li>
-    //           <li>{itemWinner.firepower}</li>
-    //           <p>{itemWinner.description}</p>
-    //         </div>
-    //       )
-    //   }
 
    letsBattle =() => {
     //    console.log("Battle Time", this.state.compareItems)
@@ -121,11 +106,7 @@ export default class HomePage extends Component {
             else{alert("YOU CANT BATTLE YOURSELF")}  //You can battle your slef at least on planes
         }
 
-        
-
-
-
-//   
+           
     addItemToCompare = (itemId) => {
         // console.log("firing", )
         const foundCompare = this.state.armory.find(item => item.id === itemId)
@@ -160,17 +141,10 @@ export default class HomePage extends Component {
 		})
     }
     
-    // filterCategories = (search) => {
-    //     this.setState({
-    //       filteredArmory: this.state.armory.filter(item =>
-    //         item.name.toLowerCase().includes(search.toLowerCase())
-    //       )
-    //     })
-    //   }
         
       filterArmory = () => this.state.armory.filter(item => {return (
             item.name.toLowerCase().includes(this.state.inputValue.toLowerCase()) || 
-            item.type.toLowerCase().includes(this.state.inputValue.toLowerCase()) || 
+            item.weaponsystem.toLowerCase().includes(this.state.inputValue.toLowerCase()) || 
 		    item.side.toLowerCase().includes(this.state.inputValue.toLowerCase()) || 
 		    item.country.toLowerCase().includes(this.state.inputValue.toLowerCase()) 
         )})
@@ -178,19 +152,19 @@ export default class HomePage extends Component {
 
     addTankArmory = (tankId) => {
         // console.log("firing")
-        const foundTank = this.state.tanks.find(tank => tank.id === tankId)
+        const foundTank = this.props.tanks.find(tank => tank.id === tankId)
         // this.state.tanks.splice(this.state.tanks.indexOf(foundBot), 1)
         this.setState({
             armory: [...this.state.armory, foundTank],
-            tanks: this.state.tanks,
+            tanks: this.props.tanks,
         }) // add conditional so no repeats
     }
 
     removeFromArmory = (itemId) => {
         // console.log("firing")
         // console.log("itemId", itemId)
-        const foundTank = this.state.tanks.find(tank => tank.id === itemId)
-        const foundPlane = this.state.planes.find(plane => plane.id === itemId)
+        const foundTank = this.props.tanks.find(tank => tank.id === itemId)
+        const foundPlane = this.props.planes.find(plane => plane.id === itemId)
 
         const foundCompareItem = this.state.compareItems.find(item => item.id === itemId)
        
@@ -231,20 +205,22 @@ export default class HomePage extends Component {
     addPlaneArmory = (planeId) => {
         // console.log("firing")
 
-        const foundPlane = this.state.planes.find(plane => plane.id === planeId)
+        const foundPlane = this.props.planes.find(plane => plane.id === planeId)
         // this.state.tanks.splice(this.state.tanks.indexOf(foundBot), 1)
         this.setState({
             armory: [...this.state.armory, foundPlane],
-            planes: this.state.planes,
+            planes: this.props.planes,
         }) // add conditional so no repeats
     }
+
 
     
 
     render(){
         // console.log("state in homepage", this.state)
-        // console.log("props in homepage", this.props)
+        console.log("props in homepage", this.props)
         // console.log("itermWinner in homepage", this.state.itemWinner)
+       
         return(
         <div>
             <UserProfile />
@@ -259,8 +235,9 @@ export default class HomePage extends Component {
             {this.state.clickedItem ?
                 <ItemSpecs {...this.state.clickedItem} handleClick={this.handleClick} />  :
                      <div>
-                    <TankCollection tanks={this.state.tanks} addToArmory={this.addTankArmory}  /> 
-                    <PlaneCollection planes={this.state.planes} addToArmory={this.addPlaneArmory}  /> 
+                    <TankCollection tanks={this.props.tanks} addToArmory={this.addTankArmory}  /> 
+        
+                    <PlaneCollection planes={this.props.planes} addToArmory={this.addPlaneArmory}  /> 
                     </div> }
             </div>
             

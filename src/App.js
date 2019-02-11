@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import MainPage from './MainPage'
+import MainPage from './containers/MainPage'
 // import LoginBox from './LoginBox'
 // import RegisterBox from './RegisterBox'
 import './App.css';

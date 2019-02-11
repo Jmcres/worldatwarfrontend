@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import TankCard from "./TankCard";
+import WeaponCard from "../components/WeaponCard";
 // import PlaneCard from "./PlaneCard";
 
 
@@ -13,8 +13,8 @@ export default class UserArmory extends Component {
           <div className="ui segment inverted olive User-Armory">
             <div className="ui five column grid">
               <div className="row user-army-row">
-              {this.props.armory.map(tank => { return (
-                            <TankCard key={tank.id} {...tank}  showDetails={this.props.showDetails} addItemToCompare={this.props.addItemToCompare} removeFromArmory={this.props.removeFromArmory}  /> )})}
+              {this.props.armory.map(weapon => { return (
+                            <WeaponCard key={weapon.id} {...weapon}  showDetails={this.props.showDetails} addItemToCompare={this.props.addItemToCompare} removeFromArmory={this.props.removeFromArmory}  /> )})}
           
           
             {/* {this.props.armory.map(plane => { return (
