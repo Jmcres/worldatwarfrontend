@@ -11,7 +11,7 @@ export default class Signup extends Component{
                    <form onSubmit={this.props.handleSubmit}>
                          <input type="text" name="firstInput" placeholder="First Name" value={this.props.firstInput} onChange={this.props.handleChange}/>
                          <input type="text" name="lastInput" placeholder="Last Name" value={this.props.lastInput} onChange={this.props.handleChange}/>
-                         <input type="email" name="emailInput" placeholder="Email" value={this.props.signEmail} onChange={this.props.handleChange}/>
+                         <input type="text" name="emailInput" placeholder="Email" value={this.props.signEmail} onChange={this.props.handleChange}/>
                      <input type="password" name="passwordInput" placeholder="Password" value={this.props.signPassword} onChange={this.props.handleChange}/>
                      <input type="password" name="confirmInput" placeholder="Confirm Password"value={this.props.confirmInput} onChange={this.props.handleChange}/>
                      <input type="submit" value="Submit" />

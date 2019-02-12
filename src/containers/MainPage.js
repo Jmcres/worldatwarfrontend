@@ -2,7 +2,8 @@ import React, { Component} from 'react';
 import WeaponPage from './WeaponPage'
 // import LoginBox from './LoginBox'
 // import RegisterBox from './RegisterBox'
-import LogReg from '../Login/LogReg'
+import UserProfile from './UserProfile'
+
 
 
 class MainPage extends Component {
@@ -51,6 +52,7 @@ class MainPage extends Component {
       // console.log(planeArray)
     return (
       <div className="App">
+           <UserProfile currentUser={this.props.currentUser} />
            <WeaponPage tanks={this.state.weapons.filter(weapon => weapon.weaponsystem === "tank")} planes={this.state.weapons.filter(weapon => weapon.weaponsystem === "plane")}/>
       </div>
     );

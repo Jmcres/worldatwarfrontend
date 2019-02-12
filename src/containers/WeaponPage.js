@@ -9,7 +9,7 @@ import Search from '../components/Search'
 import ItemSpecs from '../components/ItemSpecs'
 import Compare from './Compare'
 import Popup from '../components/Popup'
-import UserProfile from './UserProfile'
+// import UserProfile from './UserProfile'
 // import Form from './Form'
 
 
@@ -108,7 +108,6 @@ export default class WeaponPage extends Component {
 
            
     addItemToCompare = (itemId) => {
-        // console.log("firing", )
         const foundCompare = this.state.armory.find(item => item.id === itemId)
         // console.log("foundCompare", foundCompare.type, this.state.compareItems.type)
         if(this.state.compareItems.length === 0){
@@ -223,7 +222,6 @@ export default class WeaponPage extends Component {
        
         return(
         <div>
-            <UserProfile />
             <br></br>
             <Search handleChange={this.handleChange} inputValue={this.state.inputValue} toggleFormHidden={this.toggleFormHidden}/>
             <div className="thumbnail"style={thumbnailStyle}>
@@ -236,7 +234,6 @@ export default class WeaponPage extends Component {
                 <ItemSpecs {...this.state.clickedItem} handleClick={this.handleClick} />  :
                      <div>
                     <TankCollection tanks={this.props.tanks} addToArmory={this.addTankArmory}  /> 
-        
                     <PlaneCollection planes={this.props.planes} addToArmory={this.addPlaneArmory}  /> 
                     </div> }
             </div>
