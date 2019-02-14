@@ -36,7 +36,7 @@ class TankCollection extends Component {
         
 
     render() {
-        console.log("Props in TankCollection", this.props)
+        // console.log("Props in TankCollection", this.props)
         // console.log(tanks.index)
         return (
             <div>

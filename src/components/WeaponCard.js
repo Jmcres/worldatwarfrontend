@@ -9,7 +9,7 @@ class WeaponCard extends Component {
     
    
     render() {
-        // console.log("tankCard state", this.state)
+        // console.log("weaponCard props", this.props)
      return (
             <div className="ui column">
                         <div

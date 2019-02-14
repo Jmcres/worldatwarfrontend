@@ -33,10 +33,11 @@ export default class WeaponPage extends Component {
         compareItems:[],
         itemWinner: [],
         isHidden: true,
-        formHidden: true,
+        // formHidden: true,
     }
    
 
+    // 
     
     toggleHidden = () => {
         this.setState({
@@ -67,9 +68,10 @@ export default class WeaponPage extends Component {
           })
       }
 
+   
 
-   letsBattle =() => {
-    //    console.log("Battle Time", this.state.compareItems)
+   letsBattle = () => {
+       console.log("Battle Time", this.state.compareItems)
       
 
        const scoreOne = Math.round((((((((this.state.compareItems[0].firepowergun *(.75)) +
@@ -96,14 +98,14 @@ export default class WeaponPage extends Component {
             } else if (scoreOne < scoreTwo) {
                 return this.setState({
                     itemWinner: this.state.compareItems[1]
-                })} else {
+                })} else  {
                     return this.setState({
                         itemWinner: null
                     })
                 }
         // alert( this.state.compareItems[1].name + " " + "Wins")
-         } 
-            else{alert("YOU CANT BATTLE YOURSELF")}  //You can battle your slef at least on planes
+
+         } else {alert("YOU CANT BATTLE YOURSELF")}  //You can battle your slef at least on planes
         }
 
            
@@ -114,14 +116,17 @@ export default class WeaponPage extends Component {
             this.setState({
                 compareItems: [...this.state.compareItems, foundCompare],
             })
-         } else if (this.state.compareItems.length === 1 && this.state.compareItems[0].type === foundCompare.type){
+         } else if (this.state.compareItems.length === 1 && this.state.compareItems[0].weaponsystem === foundCompare.weaponsystem && this.state.compareItems[0].id !== foundCompare.id){
                 this.setState({
                     compareItems: [...this.state.compareItems, foundCompare],
                 })
-            } else if (this.state.compareItems.length === 1 && this.state.compareItems[0].type !== foundCompare.type){
+            } else if (this.state.compareItems.length === 1 && this.state.compareItems[0].weaponsystem !== foundCompare.weaponsystem){
                 alert("You can only compare weapons of the same type")
-        } else { alert("You Can Only Compare Two Items")}
-    }
+        } else if (this.state.compareItems.length === 1 && this.state.compareItems[0].weaponsystem === foundCompare.weaponsystem && this.state.compareItems[0].id === foundCompare.id){
+            alert("You Cannot Compare the same Weapon System")
+        }
+            else{ alert("You Can Only Compare Two Items")}
+        }
 
 
     compareBack =(itemId)=> {
@@ -149,49 +154,92 @@ export default class WeaponPage extends Component {
         )})
         
 
-    addTankArmory = (tankId) => {
-        // console.log("firing")
-        const foundTank = this.props.tanks.find(tank => tank.id === tankId)
-        // this.state.tanks.splice(this.state.tanks.indexOf(foundBot), 1)
-        this.setState({
-            armory: [...this.state.armory, foundTank],
-            tanks: this.props.tanks,
-        }) // add conditional so no repeats
-    }
+    
 
-    removeFromArmory = (itemId) => {
-        // console.log("firing")
-        // console.log("itemId", itemId)
-        const foundTank = this.props.tanks.find(tank => tank.id === itemId)
-        const foundPlane = this.props.planes.find(plane => plane.id === itemId)
-
-        const foundCompareItem = this.state.compareItems.find(item => item.id === itemId)
-       
-        // console.log("found tank", foundTank, "foundPlane", foundPlane)
-
-        // this.state.tanks.splice(this.state.tanks.indexOf(foundBot), 1)
-        if(foundPlane === undefined){
-        this.setState({
-            armory: this.state.armory.filter((item) => { return (item !== foundTank)}),
-            compareItems: this.state.compareItems.filter((item) => { return (item !== foundCompareItem)})
-
-        }) 
-        } else {
-            this.setState({
-            armory: this.state.armory.filter((item) => { return (item !== foundPlane)}),
-            compareItems: this.state.compareItems.filter((item) => { return (item !== foundCompareItem)})
-            })
+            
+    componentDidMount(){
+        fetch(`http://localhost:3000/api/v1/users/${this.props.currentUser.id}`)
+        .then(response => response.json())
+        .then(userArmory=>this.setState({
+                armory: userArmory.weapons
+            }))
         }
-    }
+
+
+
+        addTankArmory = (tankId) => {
+            // console.log("firing")
+            const foundTank = this.props.tanks.find(tank => tank.id === tankId)
+            const preventDoubles = this.state.armory.find(tank => tank.id === tankId)
+            if(!preventDoubles){
+                this.setState({
+                    armory: [...this.state.armory, foundTank]
+                })
+                }
+            fetch("http://localhost:3000/api/v1/user_weapons/", {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    user_id: this.props.currentUser.id,
+                    weapon_id: tankId,
+                    })
+            })
+        }     
+               
+              
+       
+        addPlaneArmory = (planeId) => {
+            // console.log("firing")
+            const foundPlane = this.props.planes.find(plane => plane.id === planeId)
+            const preventDoubles = this.state.armory.find(plane => plane.id === planeId)
+            if(!preventDoubles){
+                this.setState({
+                    armory: [...this.state.armory, foundPlane]
+                })
+                }
+            fetch("http://localhost:3000/api/v1/user_weapons/", {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    user_id: this.props.currentUser.id,
+                    weapon_id: planeId,
+                    })
+            }) }     
+           
+
+        
+
+       
+            deleteWeapon = (itemId) => {
+            const userWeapons = this.state.armory.map(item => item.user_weapons)
+            console.log("user weapons", userWeapons)
+            const deleteWeapon = userWeapons.find(item => item[0].weapon_id===itemId)
+            const updateArmory = this.state.armory.filter((item) => { return (item.id !== itemId)})
+                this.setState({
+                    armory: updateArmory
+                })
+            fetch(`http://localhost:3000/api/v1/user_weapons/${deleteWeapon[0].id}`, {
+                method: 'DELETE' 
+             })
+            }
+        
+          
 
     showDetails = (itemId) => {
         // console.log("showing")
         const clickedItem = this.state.armory.find(item => item.id === itemId)
-  
       this.setState({
         clickedItem: clickedItem
         })
       }
+
+     
 
       handleClick = () => {
         // console.log("firing")
@@ -201,35 +249,25 @@ export default class WeaponPage extends Component {
       }
 
 
-    addPlaneArmory = (planeId) => {
-        // console.log("firing")
-
-        const foundPlane = this.props.planes.find(plane => plane.id === planeId)
-        // this.state.tanks.splice(this.state.tanks.indexOf(foundBot), 1)
-        this.setState({
-            armory: [...this.state.armory, foundPlane],
-            planes: this.props.planes,
-        }) // add conditional so no repeats
-    }
-
-
+   
+    
     
 
     render(){
-        // console.log("state in homepage", this.state)
-        console.log("props in homepage", this.props)
+        // console.log("armory", this.state.armory)
+        // console.log("props in homepage", this.props)
         // console.log("itermWinner in homepage", this.state.itemWinner)
        
         return(
         <div>
             <br></br>
-            <Search handleChange={this.handleChange} inputValue={this.state.inputValue} toggleFormHidden={this.toggleFormHidden}/>
+            <Search  toggleFormHide={this.props.toggleFormHide} handleChange={this.handleChange} inputValue={this.state.inputValue} toggleFormHidden={this.toggleFormHidden}/>
             <div className="thumbnail"style={thumbnailStyle}>
             <div>
             {!this.state.isHidden ? <Popup toggleClose={this.toggleClose} itemWinner={this.state.itemWinner}/> :
             <div>
             <Compare toggleHidden={this.toggleHidden} compareItems={this.state.compareItems} compareBack={this.compareBack} letsBattle={this.letsBattle}/>
-            <UserArmory armory={this.filterArmory()} addItemToCompare={this.addItemToCompare}  showDetails={this.showDetails} removeFromArmory={this.removeFromArmory} />
+            <UserArmory armory={this.filterArmory()} addItemToCompare={this.addItemToCompare}  showDetails={this.showDetails} removeFromArmory={this.deleteWeapon} />
             {this.state.clickedItem ?
                 <ItemSpecs {...this.state.clickedItem} handleClick={this.handleClick} />  :
                      <div>

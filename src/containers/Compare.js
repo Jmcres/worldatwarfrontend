@@ -14,7 +14,7 @@ export default class Compare extends Component {
     //     })
     //   }
 
-    something = () => {
+    jiMoney = () => {
         this.props.letsBattle()
         this.props.toggleHidden()
     }
@@ -34,7 +34,7 @@ export default class Compare extends Component {
                 <CompareSpecs key={item.id} {...item} style={{flex: 1}} compareBack={this.props.compareBack} /> )})}
                 </div>
                 {/* onClick={()=> this.props.letsBattle()} */}
-                <button onClick={this.something} >Lets Battle</button>
+                <button onClick={this.jiMoney} >Lets Battle</button>
                 </div> : 
                 <div>
                 {this.props.compareItems.map(item => { return (
