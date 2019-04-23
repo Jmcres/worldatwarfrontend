@@ -1,39 +1,50 @@
 import React, { Component } from "react";
 // import { Card, CardTitle } from 'react-materialize'
-import { Card, Grid, Image, Message, Segment, Button } from "semantic-ui-react";
+import {
+  Card,
+  Grid,
+  Image,
+  Message,
+  Segment,
+  Button,
+  Item
+} from "semantic-ui-react";
 
 class WeaponCard extends Component {
   render() {
     // console.log("weaponCard props", this.props)
     return (
       <div>
-        <Card>
-          <Segment
-            attached="top"
-            onClick={() => this.props.showDetails(this.props.id)}
-          >
-            <Image size="small" centered src={this.props.img_url} />
-          </Segment>
+        {/* <Segment> */}
+        <Image
+          size="medium"
+          centered
+          // circular
+          // floated="left"
 
-          <Message attached="bottom" color="olive">
-            <Card.Content>
-              <Card.Header>
+          src={this.props.img_url}
+          onClick={() => this.props.showDetails(this.props.id)}
+        />
+        <Message color="olive">
+          <Item>
+            <Item.Content>
+              <Item.Header>
                 <strong>
                   <h3>{this.props.name}</h3>
                 </strong>
-              </Card.Header>
-              <Card.Meta>
+              </Item.Header>
+              <Item.Meta>
                 <h4>
                   {this.props.type}
                   {this.props.role}
                 </h4>
-              </Card.Meta>
-              <Card.Description>
+              </Item.Meta>
+              <Item.Description>
                 Steve wants to add you to the group{" "}
                 <strong>best friends</strong>
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
+              </Item.Description>
+            </Item.Content>
+            <Item.Extra>
               <div className="ui two buttons">
                 <Button
                   basic
@@ -46,9 +57,11 @@ class WeaponCard extends Component {
                   Delete
                 </Button>
               </div>
-            </Card.Content>
-          </Message>
-        </Card>
+            </Item.Extra>
+          </Item>
+        </Message>
+        {/* </Segment> */}
+        <br />
       </div>
       //   <Card>
       //     <Segment attached="top">

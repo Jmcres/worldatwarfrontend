@@ -265,12 +265,14 @@ export default class WeaponPage extends Component {
 
     return (
       <div>
-        <SearchBar
-          toggleFormHide={this.props.toggleFormHide}
-          handleChange={this.handleChange}
-          inputValue={this.state.inputValue}
-          toggleFormHidden={this.toggleFormHidden}
-        />
+        <Segment tertiary>
+          <SearchBar
+            toggleFormHide={this.props.toggleFormHide}
+            handleChange={this.handleChange}
+            inputValue={this.state.inputValue}
+            toggleFormHidden={this.toggleFormHidden}
+          />
+        </Segment>
         <div className="thumbnail" style={thumbnailStyle}>
           <div>
             {!this.state.isHidden ? (
@@ -280,12 +282,6 @@ export default class WeaponPage extends Component {
               />
             ) : (
               <div>
-                <Compare
-                  toggleHidden={this.toggleHidden}
-                  compareItems={this.state.compareItems}
-                  compareBack={this.compareBack}
-                  letsBattle={this.letsBattle}
-                />
                 <UserArmory
                   armory={this.filterArmory()}
                   addItemToCompare={this.addItemToCompare}
@@ -295,9 +291,16 @@ export default class WeaponPage extends Component {
                   tanks={this.props.tanks}
                   planes={this.props.planes}
                 />
+                <Compare
+                  toggleHidden={this.toggleHidden}
+                  compareItems={this.state.compareItems}
+                  compareBack={this.compareBack}
+                  letsBattle={this.letsBattle}
+                />
                 {this.state.clickedItem ? (
                   <ItemSpecs
                     {...this.state.clickedItem}
+                    currentWeapon={this.state.clickedItem}
                     handleClick={this.handleClick}
                     weapons={this.props.weapons}
                   />
