@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+#root {
+  background-image: url("https://abmc.gov/sites/default/files/styles/rect_thumb_280x190/public/interactive/WWII%20Timelineupdated.jpg?itok=2_Vkzy9R");
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -30,3 +34,82 @@
     transform: rotate(360deg);
   }
 }
+
+.armory {
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+  align-content: space-around;
+  justify-content: space-between;
+  margin: 0 0 0 8px;
+  background-color: #999966;
+  outline-style: thick ridge;
+}
+
+.userprofile {
+  outline-style: double;
+  background-color: #666633;
+  margin: 5px 5px 5px 5px;
+}
+
+/* .search {
+  background-image: url("https://i.pinimg.com/originals/b0/63/c8/b063c8e1d9d810d6596f02436070e4ff.jpg");
+  margin: 5px 5px 5px 5px;
+  outline-style: thick ridge;
+  margin: 5px 5px 5px 5px;
+} */
+.nav {
+  text-align: center;
+  padding: 20px;
+  text-transform: uppercase;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 75px;
+}
+
+.mainpage {
+  background-color: #e8e8e8;
+  text-align: center;
+  padding: 20px;
+}
+
+/* .links {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  list-style-type: square;
+} */
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  float: right;
+}
+
+.armory .ui.grid > .row.user-army-row {
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+/* .planeslide{
+  background-image: url("https://previews.123rf.com/images/yuliaglam/yuliaglam1303/yuliaglam130300020/18225590-camouflage-pattern.jpg");
+} */
+
+/* .tankslide{
+  background-image: url("https://i.pinimg.com/originals/c2/42/1c/c2421c1fcc2c187b1aeb1e0386e87d73.jpg") ;
+} */
+
+.loginform {
+  background-image: url("https://abmc.gov/sites/default/files/styles/rect_thumb_280x190/public/interactive/WWII%20Timelineupdated.jpg?itok=2_Vkzy9R");
+}
+
+.mainlogin {
+  display: flex;
+  justify-content: center;
+}
+/* .itemspec {
+  background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PDw8PDw8VDw8PDw8NDw8PDxAQDQ8PFRUWFhURFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALcBEwMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAAAAQIHA//EACMQAQEBAAIABQUBAAAAAAAAAAABEUHwMVGR0fEhYaHB4RL/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A6iioAgAAAAAIqACoAAAAAAAqAKCAqoAqoaCmpDQaisqCqgDUaYiwGu+IiA8hUARQEAAABBcQAAAwAAAAAAAFQBYAAAAqAKqANaIA0sZUGtQAYRUARQBFICAAIoCCpQBFBQAQAAFBBUAUAAAAAUQBVQwFjTMAaEUGUVKBUUgAACKAgACKAigBAAEUAA0EABQARU1QQAFEUBUAaEAUQBQAQAAAAABFAQVAAAAAAAAACCAoACGlA9iUh899QFQAABVQBRAGgAQAAAARQAABFABAUIAgqAFADQIAgb3gFMQADABUAUxAFEUAEBsAExQBDFAQVMBBQEFQAAAUBIKAgAAACKAiiAqKAgAAAARQBAGwACAAAAi0BBUAAAAAAgAAAABgAgoCCoAACKAIACiKCYKA0AAAAAAigIoAgqAYCggoCYKAIqgyoYCFWoAC2efngIjXfFKCAAIuAIoYBoALVQAAA0AAAAAAABUAURQBFAKAAVNBSs98+8LaC32Pdnj0WUC4uzjf38od+gL8pTYAAUAQBRO8AAgCiKAIA0gAoigJoAAApEAUEBpKigmqgBSncAIrPCgaBQP9YW/f8aAGGpgAABogCgAAAFAFAANAFQACzi/wAFiALiABqgCAAoAIS8cgBgACABgAAAIAD//Z");
+} */

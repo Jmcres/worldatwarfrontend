@@ -7,7 +7,7 @@ class PlaneSlide extends Component{
     renderDetails= () => { 
      if(this.props.activePlane){
          return(
-             <div id={`card-${this.props.activePlane}`} className="card">
+             <div id={`card-${this.props.activePlane}`} className="planeslide">
                  <h1>{this.props.activePlane.name}</h1>
                  <h2>{this.props.activePlane.role}</h2>
                  <h3>{this.props.activePlane.side}: {this.props.activePlane.country}</h3>

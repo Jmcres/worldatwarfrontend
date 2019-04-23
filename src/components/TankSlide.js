@@ -8,7 +8,7 @@ import React, {Component} from 'react'
    renderDetails= () => { 
     if(this.props.activeTank){
         return(
-            <div id={`card-${this.props.activeTank}`} className="card">
+            <div id={`card-${this.props.activeTank}`} className="tankslide">
                 <h1>{this.props.activeTank.name}</h1>
                 <h2>{this.props.activeTank.role}</h2>
                 <h3>{this.props.activeTank.side}: {this.props.activeTank.country}</h3>
