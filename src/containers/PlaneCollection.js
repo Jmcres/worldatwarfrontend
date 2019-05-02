@@ -20,6 +20,7 @@ class PlaneCollection extends Component {
 
   prevFavoritie = () => {
     const newIndex = this.state.activeIndex - 1;
+    console.log("newIndex", newIndex);
     this.setState({
       activeIndex: newIndex
     });

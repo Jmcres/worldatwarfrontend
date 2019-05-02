@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Header, Image, Message, Grid, Segment } from "semantic-ui-react";
+import {
+  Header,
+  Image,
+  Message,
+  Grid,
+  Segment,
+  Button,
+  Icon
+} from "semantic-ui-react";
 
 export default class NAV extends Component {
   render() {
@@ -19,7 +27,19 @@ export default class NAV extends Component {
               </Grid.Column>
               <Grid.Column width={14}> */}
           <Segment color="grey" inverted>
-            <Header size="huge">WORLD AT WAR</Header>
+            <Header size="huge">
+              WORLD AT WAR
+              <Button
+                animated
+                onClick={() => this.props.toggleFormHide()}
+                floated="right"
+              >
+                <Button.Content visible>Add Weapon</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="plane" />
+                </Button.Content>
+              </Button>
+            </Header>
           </Segment>
           <Grid>
             <Grid.Row columns={8}>

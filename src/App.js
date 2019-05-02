@@ -1,4 +1,4 @@
-import React, { Component, Grid, Segment } from "react";
+import React, { Component } from "react";
 
 // import LoginBox from './LoginBox'
 // import RegisterBox from './RegisterBox'
@@ -7,7 +7,7 @@ import "./App.css";
 import MainPage from "./containers/MainPage";
 import Login from "./Login/Login";
 import Signup from "./Login/Signup";
-import { Button } from "semantic-ui-react";
+import { Header, Button, Segment, Grid, Container } from "semantic-ui-react";
 
 class App extends Component {
   state = {
@@ -141,29 +141,31 @@ class App extends Component {
             password={this.state.password}
           />
         ) : null}
-
-        <Button.Group>
-          <Button
-            fluid
-            size="large"
-            id="signupButton"
-            onClick={() => this.switch("signup")}
-            className={this.state.signup ? "yellow" : "blue"}
-          >
-            Sign Up
-          </Button>
-          <Button.Or />
-          <Button
-            fluid
-            size="large"
-            id="loginButton"
-            onClick={() => this.switch("login")}
-            className={this.state.login ? "yellow" : "blue"}
-          >
-            {" "}
-            Login
-          </Button>
-        </Button.Group>
+        <Grid>
+          <Grid.Column textAlign="center">
+            <Button.Group textAlign="center">
+              <Button
+                // fluid
+                size="large"
+                id="signupButton"
+                onClick={() => this.switch("signup")}
+                className={this.state.signup ? "yellow" : "blue"}
+              >
+                Sign Up
+              </Button>
+              {/* <Button.Or /> */}
+              <Button
+                // fluid
+                size="large"
+                id="loginButton"
+                onClick={() => this.switch("login")}
+                className={this.state.login ? "yellow" : "blue"}
+              >
+                Login
+              </Button>
+            </Button.Group>
+          </Grid.Column>
+        </Grid>
       </div>
     );
     return this.state.loggedIn ? (

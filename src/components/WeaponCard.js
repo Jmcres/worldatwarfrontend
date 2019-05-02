@@ -39,10 +39,7 @@ class WeaponCard extends Component {
                   {this.props.role}
                 </h4>
               </Item.Meta>
-              <Item.Description>
-                Steve wants to add you to the group{" "}
-                <strong>best friends</strong>
-              </Item.Description>
+              <Item.Description />
             </Item.Content>
             <Item.Extra>
               <div className="ui two buttons">
@@ -53,7 +50,11 @@ class WeaponCard extends Component {
                 >
                   MOBILIZE
                 </Button>
-                <Button basic color="red">
+                <Button
+                  basic
+                  color="red"
+                  onClick={() => this.props.removeFromArmory(this.props.id)}
+                >
                   Delete
                 </Button>
               </div>
@@ -63,38 +64,6 @@ class WeaponCard extends Component {
         {/* </Segment> */}
         <br />
       </div>
-      //   <Card>
-      //     <Segment attached="top">
-      //       <Image
-      //         size="medium"
-      //         src={this.props.img_url}
-      //         onClick={() => this.props.showDetails(this.props.id)}
-      //       />
-      //     </Segment>
-      //     <Message attached="middle" color="blue">
-      //       <h1>{this.props.name}</h1>
-      //       {this.props.type}
-      //       {this.props.role}
-      //       <h3>
-      //         {this.props.side}
-      //         <br />
-      //         {this.props.country}
-      //       </h3>
-      //     </Message>
-      //     <Message attached="bottom" color="blue">
-      //       <h6> Firepower: {this.props.gun}</h6>
-      //       <h6>Ammo: {this.props.ammo}</h6>
-      //       <h6>Armor: {this.props.armor}</h6>
-      //       {/* </Card.Meta>
-      //       </Card.Content> */}
-      //       <button onClick={() => this.props.addItemToCompare(this.props.id)}>
-      //         Mobilize
-      //       </button>
-      //       <button onClick={() => this.props.removeFromArmory(this.props.id)}>
-      //         X
-      //       </button>
-      //     </Message>
-      //   </Card>
     );
   }
 }

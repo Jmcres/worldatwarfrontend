@@ -13,7 +13,7 @@ import {
 export default class UserArmory extends Component {
   state = {
     startIdx: 0,
-    endIdx: 5
+    endIdx: 4
   };
 
   showMore = () => {
@@ -37,7 +37,7 @@ export default class UserArmory extends Component {
       this.state.startIdx,
       this.state.endIdx
     );
-    console.log("Armory", this.props);
+    console.log("Armory", this.props.armory.length);
     return (
       <div>
         <Segment inverted>
@@ -45,6 +45,7 @@ export default class UserArmory extends Component {
             <Button
               floated="left"
               onClick={() => this.showLess()}
+              disabled={this.state.startIdx === 0}
               content="Back"
               icon="left arrow"
               labelPosition="left"
@@ -52,6 +53,7 @@ export default class UserArmory extends Component {
             <Button
               floated="right"
               onClick={() => this.showMore()}
+              disabled={this.state.endIdx === this.props.armory.length}
               content="Next"
               icon="right arrow"
               labelPosition="right"

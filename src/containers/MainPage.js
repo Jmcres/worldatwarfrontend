@@ -16,7 +16,7 @@ class MainPage extends Component {
   };
 
   toggleFormHide = () => {
-    console.log("Where you be Hiding Form");
+    // console.log("Where you be Hiding Form");
     this.setState({ formHidden: false });
   };
 
@@ -37,33 +37,18 @@ class MainPage extends Component {
       });
   }
 
-  // seperateWeaponsArray = () => {
-  //     const upDatedTanks = this.state.weapons.filter(weapon => weapon.weaponsystem === "tank")
-  //     const upDatedPlanes = this.state.weapons.filter(weapon => weapon.weaponsystem === "plane")
-  //     this.setState({
-  //       planes: upDatedPlanes,
-  //       tanks: upDatedTanks,
-  //     })
-  //   }
-
-  // addNewWeaponToWeapons = (newWeapon) =>{
-  //   this.setState({
-  //     weapons: [...this.state.weapons, newWeapon]
-  //   })
-  // }
-
   render() {
-    console.log(
-      "State in MainPage",
-      this.state,
-      "currentUser",
-      this.props.currentUser
-    );
+    // console.log(
+    //   "State in MainPage",
+    //   this.state,
+    //   "currentUser",
+    //   this.props.currentUser
+    // );
     // const tankArray = this.state.weapons.filter(weapon => weapon.weaponsystem === "tank")
     // console.log(planeArray)
     return (
       <Segment>
-        <NAV />
+        <NAV toggleFormHide={this.toggleFormHide} />
         {/* <UserProfile currentUser={this.props.currentUser} /> */}
         {!this.state.formHidden ? (
           <WeaponForm

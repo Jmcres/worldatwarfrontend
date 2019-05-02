@@ -195,6 +195,8 @@ export default class WeaponPage extends Component {
           weapon_id: tankId
         })
       });
+    } else {
+      alert("Weapon Already In Armory");
     }
   };
 
@@ -220,24 +222,30 @@ export default class WeaponPage extends Component {
           weapon_id: planeId
         })
       });
+    } else {
+      alert("Weapon Already In Armory");
     }
   };
 
   deleteWeapon = itemId => {
-    const deleteWeapon = this.state.armory.find(item => item.id);
-    console.log("user weapons", deleteWeapon);
-    // const deleteWeapon = userWeapons.find(item => item.id === itemId);
+    const armoryWeapon = this.state.armory.find(item => item.id === itemId);
+    console.log(" armoryWeapon", armoryWeapon);
+    const weaponToDelete = armoryWeapon.user_weapons.find(item => {
+      return item.user_id === this.props.currentUser.id;
+    });
+    console.log("weaponToDelete", weaponToDelete);
+    // const deleteWeapon = userWeapon.find(item => item.id === itemId);
     // console.log("delete weapon", deleteWeapon);
     const updateArmory = this.state.armory.filter(item => {
       return item.id !== itemId;
     });
     console.log("update Armory", updateArmory);
-    if (deleteWeapon) {
+    if (weaponToDelete) {
       this.setState({
         armory: updateArmory
       });
 
-      fetch(`http://localhost:3000/api/v1/user_weapons/${deleteWeapon.id}`, {
+      fetch(`http://localhost:3000/api/v1/user_weapons/${weaponToDelete.id}`, {
         method: "DELETE"
       });
     }

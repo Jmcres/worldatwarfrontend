@@ -29,6 +29,11 @@ const CompareSpecs = props => {
       <Grid columns="equal" divided>
         <Grid.Row>
           <Grid.Column>
+            <Header as="h2" icon>
+              <Icon name="chess knight" />
+              <h1>{props.name}</h1>
+              <Header.Subheader>WEAPON SYSTEM DETAILS</Header.Subheader>
+            </Header>
             <Image
               size="medium"
               circular
@@ -36,12 +41,6 @@ const CompareSpecs = props => {
               bordered
               src={props.img_url}
             />
-
-            <Header as="h2" icon>
-              <Icon name="chess knight" />
-              <h1>{props.name}</h1>
-              <Header.Subheader>WEAPON SYSTEM DETAILS</Header.Subheader>
-            </Header>
           </Grid.Column>
           <Grid.Column>
             <Message color="green">
